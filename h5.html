@@ -1,0 +1,261 @@
+<!DOCTYPE HTML>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<head>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .content {
+            width: 300px;
+            height: 600px;
+            background-color: pink;
+            overflow: hidden;
+        }
+
+        .one {
+            width: 50px;
+            height: 50px;
+            background-color: blueviolet;
+            margin: 20px auto;
+        }
+
+        .two {
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            margin: 20px auto;
+        }
+
+        .file {
+            width: 50px;
+            height: 50px;
+            margin: 20px auto;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content" class="content" style="width:350px">
+        <p id="fire">this is a fiie staring in my heart</p>
+        <div id="two" class="two">
+
+        </div>
+
+        <div id="one" class="one" draggable="true">
+
+        </div>
+
+        <img id="img" src="" alt="">
+    </div>
+
+    <script>
+        // window.addEventListener("message", function(event) {
+        //     console.log(event)
+        // })
+        // setTimeout(() => {
+        //     window.postMessage({a: 666}, "/")
+        // }, 2000);
+
+        // var content = document.querySelector("#content");
+        // var one = document.querySelector("#one");
+        // var two = document.querySelector("#two");
+        // var fire = document.querySelector("#fire");
+        // var img = document.querySelector("#img");
+
+        // var range = document.createRange();
+        // range.selectNodeContents(fire);
+        // var selection = window.getSelection();
+        // selection.removeAllRanges();
+        // selection.addRange(range);
+
+
+        // var mimg = document.createElement("img");
+        // mimg.width = 16;
+        // mimg.height = 16;
+        // mimg.src = "./img/zan.png"
+
+        // var dropTarget;
+
+        // fire.addEventListener("dragstart", function (event) {
+        //     console.log("fire === dragstart")
+        //     event.dataTransfer.setData("url", "https://baidu.com")
+        // })
+        // fire.addEventListener("drag", function (event) {
+        //     console.log("fire === drag")
+        // })
+        // fire.addEventListener("dragend", function (event) {
+        //     console.log("fire === dragend")
+        // })
+
+        // one.addEventListener("dragstart", function (event) {
+        //     console.log("one === dragstart")
+        //     event.dataTransfer.setDragImage(mimg, 0, 0)
+        // })
+        // one.addEventListener("drag", function (event) {
+        //     // console.log("one === drag")
+        // })
+        // one.addEventListener("dragend", function (event) {
+        //     console.log("one === dragend")
+        //     if (dropTarget) {
+        //         dropTarget.appendChild(event.currentTarget)
+        //     }
+        // })
+
+        // two.addEventListener("dragenter", function (event) {
+        //     event.preventDefault();
+        //     // console.log("two === dragenter")
+        // })
+        // two.addEventListener("dragover", function (event) {
+        //     event.preventDefault();
+        //     console.log("two === dragover")
+
+        // })
+        // two.addEventListener("drop", function (event) {
+        //     event.preventDefault();
+        //     var t = event.dataTransfer.getData("text/plain")
+        //     var l = event.dataTransfer.getData("text/uri-list")
+        //     console.log("two === drop : ", t, l)
+
+        //     dropTarget = event.currentTarget;
+
+        //     var f = event.dataTransfer.files[0];//获取到第一个上传的文件对象
+
+        //     var url = window.URL.createObjectURL(f)
+        //     console.log(url)
+        //     var u = url
+        //     window.URL.revokeObjectURL(url)
+        //     img.src = u;
+            
+
+        //     // if (f) {
+        //     //     var fr = new FileReader();//实例FileReader对象
+        //     //     fr.readAsDataURL(f);//把上传的文件对象转换成url
+        //     //     fr.onload = function (e) {
+        //     //         console.log(e);
+        //     //         var Url = e.target.result;//上传文件的URL base64
+        //     //         // var Url = this.result;//上传文件的URL 同上
+        //     //         img.src = Url;
+        //     //     }
+        //     // }
+
+        // })
+
+        // two.addEventListener('click', function (e) {
+        //     history.pushState({}, "", "sss")
+        // })
+
+        // var o = {
+        //     "a": "haha  xixi",
+        //     "toJSON": function () {
+        //         return {
+        //             "b": "hehehe",
+        //             "c": "gagagaga",
+        //             "d": "I am old",
+        //             "e": 66666
+        //         }
+        //     }
+        // }
+
+        // var str = JSON.stringify(o, function (key, val) {
+        //     if (key === "b")
+        //         return "wuwuwuwu"
+        //     else if (key === "c")
+        //         return "qiqiqiqiqi"
+        //     else if (key === "e")
+        //         return undefined
+        //     else
+        //         return val
+        // }, 2)
+        // console.log(str)
+
+        // var obj = JSON.parse(str, function(key, val) {
+        //     if (key === "b")
+        //         return "wuwuwuwu"
+        //     else if (key === "c")
+        //         return "qiqiqiqiqi"
+        //     else if (key === "e")
+        //         return undefined
+        //     else
+        //         return val
+        // })
+        // console.log(obj)
+
+        // (function () {
+        //     try {
+        //         console.log("try");
+        //         return;
+        //     } catch (e) {
+        //         console.log("catch")
+        //     } finally {
+        //         // 就算return 了，也是会走到这步
+        //         console.log("finally")
+        //     }
+        // })()
+
+        // window.addEventListener("online", function(e) {
+        //     console.log('online ==== ', e)
+        // })
+        // window.addEventListener("offline", function(e) {
+        //     console.log('offline ==== ', e)
+        // })
+
+        // const indexedDB = window.indexedDB || window.webkitIndexedDB ||
+        //     window.mozIndexedDB;
+        // var db;
+
+        // const rq = indexedDB.open("DBName", 1);
+        // rq.onerror = function (e) {
+        //     console.log("error ", e)
+        // }
+        // rq.onsuccess = function (e) {
+        //     db = e.target.result
+        // }
+
+        // rq.onupgradeneeded = (e) => {
+        //     console.log("onupgradeneeded")
+        //     db = e.target.result
+        //     testStore(db)
+        // }
+
+        // function testStore(db) {
+        //     console.log('testStore =========')
+        //     var store = db.createObjectStore("users", { keyPath: "name" })
+        //     store.add({ name: "haha", age: 666 })
+        //     var val = store.get("haha")
+        //     val.onsuccess = function (e) {
+        //         var user = e.target.result;
+        //         console.log(user);
+        //     };
+        //     val.onerror = function(e) {
+        //         console.log('val.onerror')
+        //     }
+        // }
+
+        // document.addEventListener("visibilitychange", function(e) {
+        //     console.log("visibilitychange == ", e)
+        // })
+
+
+        // var worker = new Worker("./worker.js")
+        // worker.onerror = function(e) {
+        //     console.log(e)
+        // }
+        // worker.onmessage = function(event) {
+        //     console.log("daddy receive : ", event.data)
+        // }
+        // var list = [2,4,5,7,1,3,8,6,9]
+        // worker.postMessage(list)
+
+        
+
+
+
+    </script>
+</body>
+
+</html>

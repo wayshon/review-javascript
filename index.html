@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<head>
+    <style>
+        body {
+            position: relative;
+            padding: 0;
+            margin: 0;
+        }
+
+        .content {
+            width: 300px;
+            height: 600px;
+            background-color: aquamarine
+        }
+
+        .redColor {
+            color: red
+        }
+
+        .font22 {
+            font-size: 22px;
+        }
+
+        #put {
+            width: 50vw;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="father" class="content" style="width:350px">
+        <p>qwertyuio</p>
+        <div id="child">
+            <p id="asd" data-msg="haha" class="redColor font22">asdf</p>
+        </div>
+        <input  type="text" id="put">
+        <input type="button" id="btn" value="click me">
+    </div>
+    <script src="./fun.js"></script>
+    <!-- <script src="./oo.js"></script> -->
+    <!-- <script src="./niubi.js"></script> -->
+    <!-- <script src="./dom.js"></script> -->
+
+    <!-- <script type="module">
+        // import m1 from './module1.js'
+        // console.log(m1)
+        import * as obj from './module2.js'
+        console.log(obj.default)
+    </script> -->
+
+    <!-- <script type="module" src="./module1.js">
+        
+    </script> -->
+    <!-- <script src="./lib/require.js" data-main="./js/main" defer async="true"></script> -->
+</body>
+
+</html>

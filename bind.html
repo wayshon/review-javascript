@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<body>
+
+    <body>
+        <p>
+            <input type="text" id="inputtext">
+        </p>
+        <p>
+            <input type="button" id="add" value="value加1">
+        </p>
+        <p>
+            <input type="button" id="reduce" value="value减去1">
+        </p>
+        <p>
+            value的值:
+            <span id="show"></span>
+        </p>
+    </body>
+
+    <script>
+        var inputtext = document.getElementById('inputtext');
+        var add = document.getElementById('add');
+        var reduce = document.getElementById('reduce');
+        var show = document.getElementById('show');
+
+        var value = 0;
+
+        var obj = {}
+
+        Object.defineProperties(obj, {
+            val: {
+                configurable: true,
+                get: function () {
+                    return value
+                },
+                set: function (v) {
+                    value = v;
+                    inputtext.value = value;
+                    show.innerHTML = value;
+                }
+            }
+        })
+
+        inputtext.addEventListener("input", function (event) {
+            obj.val = inputtext.value;
+        }, false)
+
+        add.addEventListener("click", function (event) {
+            obj.val += 1;
+        }, false)
+        reduce.addEventListener("click", function (event) {
+            obj.val -= 1;
+        }, false)
+
+        inputtext.value = obj.val
+        show.innerHTML = obj.val
+
+
+    </script>
+</body>
+
+</html>

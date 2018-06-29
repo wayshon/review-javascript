@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta name="format-detection" content="telephone=no">
+<title>测试上传</title>
+
+<head>
+</head>
+
+<body>
+    <article id="article" contenteditable>QWERTYUIOPASDFGHJKLZXCVBNM</article>
+    <form name="myform" method="get" action="/index.html" enctype="multipart/form-data">
+        <fieldset id="f" form="myform2" name="f1">
+            <input type="text" name="name" placeholder="hahaha" autocomplete="on" />
+            <input type="text" name="pass" placeholder="xixixi" autocomplete="off" />
+        </fieldset>
+        <textarea name="tea" id="tea" cols="30" rows="10">zxcvbnmasdfghjklqwertyuio</textarea>
+        <input type="image" src="./img/zan.png">
+        <button type="reset">reset</button>
+        <select name="se" id="se" multiple>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </form>
+
+    <button onclick="postXHR()">post xhr</button>
+    <button onclick="getXHR()">get xhr</button>
+
+    <script>
+        // var article = document.querySelector("#article")
+        // article.addEventListener('selectstart', function (e) {
+        //     console.log("禁止选中222")
+        //     e.preventDefault()
+        // })
+        // var selection = window.getSelection();
+        // var range = document.createRange();
+        // range.selectNodeContents(article);
+        // selection.removeAllRanges();
+        // selection.addRange(range);
+        // article.addEventListener("copy", function(e) {
+        //     console.log('copy ==')
+        //     e.preventDefault()
+        //     alert("不许复制")
+        // })
+
+
+        // var myform = document.forms["myform"];
+        // var tea = myform["tea"];
+        // // var list = Array.prototype.slice.call(myform.elements)
+        // // console.log(list)
+        // // tea.select()
+        // tea.focus()
+        // tea.setSelectionRange(0, 5)
+
+        // tea.addEventListener("beforecopy", function(e) {
+        //     console.log('beforecopy ==')
+        // })
+        // tea.addEventListener("copy", function(e) {
+        //     console.log('copy ==')
+        // })
+        // tea.addEventListener("beforepaste", function(e) {
+        //     console.log('beforepaste == 这个没屌用')
+        // })
+        // tea.addEventListener("paste", function(e) {
+        //     console.log('paste ==')
+        //     var t = e.clipboardData.getData("text/plain")
+        //     console.log(t)
+        // })
+        // tea.addEventListener("beforecut", function(e) {
+        //     console.log('beforecut ==')
+        // })
+        // tea.addEventListener("cut", function(e) {
+        //     console.log('cut ==')
+        // })
+
+
+        function getXHR() {
+            var xhr = new XMLHttpRequest()
+            xhr.onreadystatechange = function () {
+                console.log("readyState : ", xhr.readyState)
+            }
+            xhr.onprogress = function(event) {
+                console.log(event.lengthComputable, event.position, event.totalSize)
+            }
+            xhr.open("get", "http://localhost:3333/bind.html", true)
+            xhr.overrideMimeType("text/plain")
+            xhr.send()
+        }
+
+        function postXHR() {
+            var xhr = new XMLHttpRequest()
+            xhr.onreadystatechange = function () {
+                console.log("readyState : ", xhr.readyState)
+            }
+            xhr.open("post", "http://localhost:3333/bind.html", true)
+            // xhr.setRequestHeader("Content-Type", "application/json")
+            xhr.send(new FormData(document.forms["myform"]))
+            // xhr.send({
+            //     a: 111,
+            //     b: 222
+            // })
+        }
+
+
+    </script>
+</body>
+
+</html>
