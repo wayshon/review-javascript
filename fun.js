@@ -63,8 +63,23 @@
 
 // 7, 报错, 报错
 
-(function() {
-    var a = b = 666;
-})()
-console.log(a)
-console.log(b)
+// (function() {
+//     var a = b = 666;
+// })()
+// console.log(a)
+// console.log(b)
+
+let uri = "https://baidu.com/a/b?c=d&e=f#h^^";
+
+let en1 = encodeURI(uri)
+
+let de1 = decodeURI(uri)
+
+let en2 = decodeURIComponent(uri)
+
+let de2 = encodeURIComponent(uri)
+
+console.log(en1)
+console.log(de1)
+console.log(en2)
+console.log(de2)
