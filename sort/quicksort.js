@@ -9,26 +9,27 @@ let list = [2, 3, 1, 9, 5, 6, 4, 7, 8];
 /**
  * 这里就比较简单了，直接创建数组，把比基数小的放前数组，大的放后数组
  * 然后利用数组合并就是排序后的数组
+ * 但是重复创建了很多数组对象，加上递归的原因，这里对性能是一种严重的浪费
  */
-// let quick =  function(arr) {
-//     if (arr.length < 1) {
-//         return arr;
-//     }
-//     let base = arr[0], left = [], right = [];
-//     for (let i = 1; i < arr.length; i++) {
-//         if (arr[i] < base) {
-//             left.push(arr[i])
-//         } else {
-//             right.push(arr[i])
-//         }
-//     }
+let quick =  function(arr) {
+    if (arr.length < 1) {
+        return arr;
+    }
+    let base = arr[0], left = [], right = [];
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < base) {
+            left.push(arr[i])
+        } else {
+            right.push(arr[i])
+        }
+    }
+    return arguments.callee(left).concat(base, quick(right))
+}
+console.time('简单快速排序耗时');
+let result = quick(list);
+console.timeEnd('简单快速排序耗时');
 
-//     return arguments.callee(left).concat(base, quick(right))
-// }
-
-// let result = quick(list);
-
-// document.querySelector("#app").innerHTML = result.toString()
+document.querySelector("#app").innerHTML = result.toString()
 
 
 /**
@@ -80,7 +81,59 @@ let quickSort = function(arr, startIndex, endIndex) {
     arguments.callee(arr, startIndex, left - 1);
     arguments.callee(arr, left + 1, endIndex)
 }
-
+console.time('普通快速排序耗时');
 quickSort(list, 0, list.length - 1);
+console.timeEnd('普通快速排序耗时');
 
 document.querySelector("#app").innerHTML = list.toString()
+
+/**
+ * 取中间数快排
+ */
+// let quickSortEasy = function (arr, startIndex, endIndex) {
+//     console.log("start =================")
+//     console.log(startIndex, endIndex)
+//     if (startIndex >= endIndex) {
+//         return;
+//     }
+
+//     let baseIndex = Math.ceil((startIndex + endIndex) / 2);
+//     let base = arr[baseIndex], left = startIndex, right = endIndex;
+
+//     while (left !== right) {
+//         console.log("in =================")
+//         console.log(baseIndex, base)
+//         console.log(arr)
+        
+//         while (left < right && arr[left] <= base) {
+//             left++
+//         }
+//         while (left < right && arr[right] >= base) {
+//             right--
+//         }
+
+//         if (left < right) {
+//             let temp = arr[left];
+//             arr[left] = arr[right];
+//             arr[right] = temp;
+//         }
+//     }
+
+//     if ((right < baseIndex && base < arr[right]) || (right > baseIndex && base > arr[right])) {
+//         arr[baseIndex] = arr[right];
+//         arr[right] = base;
+//     }
+
+//     console.log("out =================")
+//     console.log(left, right)
+//     console.log(arr)
+
+//     arguments.callee(arr, 0, right - 1);
+//     arguments.callee(arr, right + 1, endIndex);
+// }
+
+// let list = [2, 3, 1, 4, 9, 8, 7, 5, 6]
+
+// quickSortEasy(list, 0, list.length - 1);
+
+// document.querySelector("#app").innerHTML = list.toString()
